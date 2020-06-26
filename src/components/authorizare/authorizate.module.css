@@ -1,0 +1,61 @@
+.authorizate_form_without_users_wrapper {
+	max-width: 400px;
+	margin: 100px auto;
+	border: 2px solid var(--side_color_one);
+	font-size: 20px;
+	text-align: center;
+	padding: 20px;
+	background-color: var(--side_color_two);
+	border-radius: 6px;
+}
+.authorizate_form_without_users_wrapper > p {
+	font-size: 25px;
+	font-weight: bold;
+	color: var(--main_color_two);
+}
+
+.input_auth_form {
+	padding: 5px;
+	outline: none;
+	border-radius: 6px;
+	width: 80%;
+	margin: 10px 0 5px;
+	border: 2px solid var(--main_color_one);
+}
+
+.input_auth_form:focus {
+	border: 2px solid var(--main_color_two);
+}
+
+.submit_auth_button {
+	outline: none;
+	background-color: var(--main_color_one);
+	color: var(--main_color_text);
+	border: 2px solid var(--main_color_two);
+	padding: 10px;
+	border-radius: 6px;
+	width: 50%;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.submit_auth_button:hover {
+	background-color: var(--main_color_two);
+}
+
+.auth_radio {
+	margin: 5px 0 15px auto;
+	color: var(--main_color_two);
+	font-size: 20px;
+
+}
+
+.auth_radio > span {
+	margin-left: 10px;
+}
+
+.auth_radios_wrapper {
+	width: 50%;
+	text-align: left;
+	margin: 0 auto;
+}
