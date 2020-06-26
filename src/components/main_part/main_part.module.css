@@ -1,0 +1,7 @@
+.main_part_wrapper {
+	width: 100%;
+	background-color: var(--side_color_two);
+	height: 100%;
+	border-radius: 0 0 6px 6px;
+	border: 2px solid var(--side_color_one);
+}

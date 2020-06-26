@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react'
 import styles from './app.module.css'
 import HeaderContainer from './components/header/HeaderContainer'
+import MainPart from './components/main_part/MainPart'
 import Authorizate from './components/authorizare/Authorizate'
 import {BrowserRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {initializeApplic} from './redux/reducers/init_app_reducer.js'
 import {putUserToLS, setAuthorizateInStateAC} from './redux/reducers/auth_reducer.js'
+import {stateSelectors} from './selectors/selectors.js'
 
 function App({name, initialized, initializeApplic, countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState}) {
 
@@ -27,6 +29,7 @@ function App({name, initialized, initializeApplic, countOfUsers, putUserToLS, ar
       <div className={styles.app_wrapper}>
         <BrowserRouter>
             <HeaderContainer></HeaderContainer>
+            <MainPart></MainPart>
         </BrowserRouter>
       </div>
     )
@@ -36,10 +39,10 @@ function App({name, initialized, initializeApplic, countOfUsers, putUserToLS, ar
 function mapStateToProps(state) {
   return {
 
-    name: state.authorize.name,
-    initialized: state.initialize.initialized,
-    countOfUsers: state.authorize.countOfUsers,
-    arrayOfUsers: state.authorize.arrayOfUsers
+    name: stateSelectors.getName(state),
+    initialized: stateSelectors.isInitialized(state),
+    countOfUsers: stateSelectors.getCountOfUsers(state),
+    arrayOfUsers: stateSelectors.getArrayOfUsers(state)
 
   }
 }

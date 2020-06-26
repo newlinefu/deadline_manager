@@ -1,11 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Header from './Header'
+import {stateSelectors} from '../../selectors/selectors.js'
 
 function mapStateToProps(state) {
-
 	return {
-		headerItems: state.header.headerItems
+		headerItems: stateSelectors.getHeaderItems(state)
 	}
 }
 
