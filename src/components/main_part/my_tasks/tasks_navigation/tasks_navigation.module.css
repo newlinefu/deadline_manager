@@ -1,0 +1,25 @@
+.category_link {
+	text-decoration: none;
+	display: block;
+	color: var(--main_color_text);
+	font-size: 20px;
+	font-weight: bold;
+	background-color: var(--main_color_one);
+	padding: 10px;
+}
+.category_link:hover {
+	background-color: var(--main_color_two);
+}
+
+.tasks_navigation_wrapper {
+	height: 100%;
+	margin-left: 10px;
+}
+
+.tasks_navigation_wrapper > .category_link:first-child {
+	border-radius: 6px 6px 0 0;
+}
+
+.tasks_navigation_wrapper > .category_link:last-child {
+	border-radius: 0 0 6px 6px;
+}

@@ -70,7 +70,10 @@ function getArrayOfUsersFromLS() {
 function putUserToLS(name) {
 	return async (dispatch) => {
 		await request.putUserToLocalStorage(name)
-		await Promise.all([dispatch(getCountOfUsersFromLS()), dispatch(getArrayOfUsersFromLS())])
+		await Promise.all([
+			dispatch(getCountOfUsersFromLS()), 
+			dispatch(getArrayOfUsersFromLS()),
+			])
 	}
 }
 

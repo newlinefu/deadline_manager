@@ -7,9 +7,12 @@ import {BrowserRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {initializeApplic} from './redux/reducers/init_app_reducer.js'
 import {putUserToLS, setAuthorizateInStateAC} from './redux/reducers/auth_reducer.js'
+import {addAllTasksToState} from './redux/reducers/my_tasks_reducer.js'
 import {stateSelectors} from './selectors/selectors.js'
 
-function App({name, initialized, initializeApplic, countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState}) {
+function App(
+  {name, initialized, initializeApplic, countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState, addAllTasksToState}
+) {
 
   useEffect(() => {
       initializeApplic()
@@ -23,6 +26,7 @@ function App({name, initialized, initializeApplic, countOfUsers, putUserToLS, ar
             putUserToLS = {putUserToLS}
             arrayOfUsers = {arrayOfUsers}
             setAuthorizateInState = {setAuthorizateInState}
+            addAllTasksToState = {addAllTasksToState}
             ></Authorizate>
   else
     return (
@@ -51,7 +55,8 @@ export default connect(mapStateToProps, {
 
   initializeApplic,
   putUserToLS,
-  setAuthorizateInState: setAuthorizateInStateAC
+  setAuthorizateInState: setAuthorizateInStateAC,
+  addAllTasksToState
 
 })(App)
 

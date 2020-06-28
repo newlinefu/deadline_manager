@@ -31,7 +31,7 @@ function initializeApplic() {
 	return (dispatch) => {
 		const getCountOfUsers = dispatch(getCountOfUsersFromLS())
 		const getArrayOfUsers = dispatch(getArrayOfUsersFromLS())
-
+		
 		Promise.all([getCountOfUsers, getArrayOfUsers])
 			.then(() => dispatch(initializeAppAC()))
 	}

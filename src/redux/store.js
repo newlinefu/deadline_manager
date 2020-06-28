@@ -3,6 +3,7 @@ import thunkMiddleware from 'redux-thunk'
 import headerReducer from './reducers/header_reducer.js'
 import authReducer from './reducers/auth_reducer.js'
 import initAppReducer from './reducers/init_app_reducer.js'
+import myTasksReducer from './reducers/my_tasks_reducer.js'
 import {reducer as formReducer} from  'redux-form'
 
 let reducers = combineReducers({
@@ -10,6 +11,7 @@ let reducers = combineReducers({
 	authorize: authReducer,
 
 	header: headerReducer,
+	tasks: myTasksReducer,
 
 	form: formReducer
 

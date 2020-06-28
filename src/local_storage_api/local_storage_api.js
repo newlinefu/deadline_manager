@@ -5,12 +5,11 @@ const defaultLocalStorageObject = {
 }
 
 export const request = {
+
 	getListLenghtCreatedUsersFromLocalStorage: function() {
 		return new Promise((resolve, reject) => {
 			setTimeout(
-				() => {
-					resolve(localStorage.length)
-				},
+				() => resolve(localStorage.length),
 				400
 			)
 		})
@@ -34,6 +33,38 @@ export const request = {
 			setTimeout(
 				() => {
 					resolve(getArrayOfAllUsers())
+				},
+				400
+			)
+		})
+	},
+
+	addNewTaskToLocalStorage: function(name, title, description, dateOfCreation, dateOfLastChange, deadline) {
+		return new Promise( (resolve, reject) => {
+			setTimeout(
+				() => {
+					const localStorageObject = JSON.parse(localStorage.getItem(name))
+					localStorageObject.tasks.push({
+						title, 
+						description, 
+						dateOfCreation, 
+						dateOfLastChange,
+						deadline
+					})
+					localStorage.setItem(name, JSON.stringify(localStorageObject))
+					resolve(true)
+				},
+				400
+			)
+		})
+	},
+
+	getAllTasksFromLocalStorage: function(name) {
+		return new Promise( (resolve, reject) => {
+			setTimeout(
+				() => {
+					const localStorageObject = JSON.parse(localStorage.getItem(name))
+					resolve(localStorageObject.tasks)
 				},
 				400
 			)

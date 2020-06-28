@@ -1,0 +1,22 @@
+.task_text_wrapper {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+	width: 90%;
+	background-color: var(--main_color_two);
+	color: var(--main_color_text);
+	opacity: 0.95;
+	border-radius: 6px;
+}
+
+.title {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.viol {
+	font-size: 20px;
+	color: var(--side_color_one);
+}

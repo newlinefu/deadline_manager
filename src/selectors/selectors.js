@@ -4,6 +4,10 @@ export const stateSelectors = {
 		return state.authorize.name
 	},
 
+	getCorrectMode: function(state) {
+		return state.tasks.correctMode
+	},
+
 	isInitialized: function(state) {
 		return state.initialize.initialized
 	},
@@ -18,5 +22,13 @@ export const stateSelectors = {
 
 	getHeaderItems: function(state) {
 		return state.header.headerItems
+	},
+
+	getTasksCategories: function(state) {
+		return state.tasks.tasksCategories
+	},
+
+	getAllTasks: function(state) {
+		return state.tasks.allTasks
 	}
 }

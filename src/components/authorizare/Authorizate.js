@@ -1,9 +1,8 @@
 import React from 'react'
-import {getCountOfUsersFromLS} from '../../redux/reducers/auth_reducer.js'
 import AuthorizateFormWithoutUsers from './AuthorizateFormWithoutUsers'
 import AuthorizateForm from './AuthorizateForm'
 
-function Authorizate({countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState}) {
+function Authorizate({countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState, addAllTasksToState}) {
 
 	function registrateUser(formData) {
 		putUserToLS(formData.input_name)
@@ -11,6 +10,7 @@ function Authorizate({countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInS
 
 	function authorize(formData) {
 		setAuthorizateInState(formData.user)
+		addAllTasksToState()
 	}
 
 	if(countOfUsers === 0) 

@@ -1,0 +1,32 @@
+.add_change_task_wrapper {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.input,
+.t_a {
+	font-size: 20px;
+	padding: 10px;
+	display: block;
+	border-radius: 6px;
+	outline: none;
+	margin-top: 10px;
+	width: 80%;
+	border: none;
+}
+
+.input {
+	
+}
+
+.t_a {
+	resize: none;
+}
+
+.buttons_wrapper {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
