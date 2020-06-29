@@ -9,7 +9,6 @@ function MainPart() {
 		<div className={styles.main_part_wrapper}>
 			<Route path='/my_information' render={() => <MyInformationContainer></MyInformationContainer>}></Route>
 			<Route path='/my_tasks' render={() => <MyTasksContainer></MyTasksContainer>}></Route>
-			<Route path='/about_application' render={() => <div></div>}></Route>
 		</div>
 	)
 }

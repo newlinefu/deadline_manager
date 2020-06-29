@@ -4,10 +4,12 @@ const ADD_TASK = 'ADD_TASK'
 const ADD_ALL_TASKS = 'ADD_ALL_TASKS'
 const ACTIVATE_CORRECT_MODE = 'ACTIVATE_CORRECT_MODE'
 const DEACTIVATE_CORRECT_MODE = 'DEACTIVATE_CORRECT_MODE'
+const ADD_CORRECTED_TASK = 'ADD_CORRECTED_TASK'
 
 const defaultState = {
 	allTasks: [],
-	correctMode: true,
+	correctMode: false,
+	correctedTask: null,
 	tasksCategories: [
 		{
 			title: 'Все задачи',
@@ -56,6 +58,12 @@ export default function myTasksReducer(state = defaultState, action) {
 				allTasks: action.allTasks
 			}
 		}
+		case(ADD_CORRECTED_TASK): {
+			return {
+				...state,
+				correctedTask: action.correctedTask
+			}
+		}
 		default:
 			return state
 	}
@@ -90,10 +98,22 @@ export function deactivateCorrectMode() {
 	}
 }
 
+export function addCorrectedTaskAC(correctedTask) {
+	if(correctedTask === null)
+		return {
+			type: ADD_CORRECTED_TASK,
+			correctedTask: null			
+		}
+	return {
+		type: ADD_CORRECTED_TASK,
+		correctedTask: {...correctedTask}
+	}
+}
+
 export function addTaskToLSAndState(title, description, deadline) {
 	return async (dispatch, getState) => {
-
-		const dateOfCreation = Date.now()
+		debugger
+		const dateOfCreation = Date.now() + 1000*60*60*3
 		const name = getState().authorize.name
 
 		const response = await request.addNewTaskToLocalStorage(
@@ -117,6 +137,29 @@ export function addAllTasksToState() {
 		const response = await request.getAllTasksFromLocalStorage(name)
 		if(response) {
 			dispatch(addAllTasksFromLS(response))
+		}
+	}
+}
+
+export function changeTaskInStateAndLS(title, description, deadline) {
+	return async (dispatch, getState) => {
+		const name = getState().authorize.name
+		const response = await request.changeTaskInLocalStorage(
+			name, title, description, Date.now() + 1000*60*60*3, Date.parse(deadline)
+		)
+		if(response){
+			dispatch(addAllTasksToState())
+			dispatch(addCorrectedTaskAC(null))
+		}
+	}
+}
+
+export function deleteTaskInLSAndState(title) {
+	return async (dispatch, getState) => {
+		const name = getState().authorize.name
+		const response = await request.deleteTaskFromLocalStorage(name, title)
+		if(response) {
+			dispatch(addAllTasksToState())
 		}
 	}
 }

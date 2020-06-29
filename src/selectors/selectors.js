@@ -30,5 +30,9 @@ export const stateSelectors = {
 
 	getAllTasks: function(state) {
 		return state.tasks.allTasks
+	},
+
+	getCorrectedTask: function(state) {
+		return state.tasks.correctedTask
 	}
 }

@@ -69,9 +69,44 @@ export const request = {
 				400
 			)
 		})
+	},
+
+	changeTaskInLocalStorage: function(name, title, description, dateOfLastChange, deadline) {
+		return new Promise( (resolve, reject) => {
+			setTimeout(
+				() => {
+					const localStorageObject = JSON.parse(localStorage.getItem(name))
+					localStorageObject.tasks = localStorageObject.tasks.map( task => {
+						if(task.title === title)
+							return {
+								title, description, dateOfCreation: task.dateOfCreation, dateOfLastChange, deadline
+							}
+						return task
+					})
+					localStorage.setItem(name, JSON.stringify(localStorageObject))
+					resolve(true)					
+				},
+				400
+			)
+		})
+	},
+
+	deleteTaskFromLocalStorage: function(name, title) {
+		return new Promise( (resolve, reject) => {
+			setTimeout(
+				() => {
+					const localStorageObject = JSON.parse(localStorage.getItem(name))
+					localStorageObject.tasks = localStorageObject.tasks.filter( task => task.title != title)
+					localStorage.setItem(name, JSON.stringify(localStorageObject))
+					resolve(true)
+				},
+				400
+			)
+		})
 	}
 }
 
+window.request = request
 function getArrayOfAllUsers() {
 	const arrayOfAllUsers = []
 

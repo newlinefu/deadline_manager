@@ -1,11 +1,11 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import styles from './add_change_task.module.css'
+import styles from './add_task.module.css'
 
-function AddChangeTaskForm({handleSubmit, ...props}) {
+function AddTaskForm({handleSubmit, deactivateCorrectMode, ...props}) {
 
 	return (
-		<form onSubmit={handleSubmit} className = {styles.add_change_task_wrapper}>
+		<form onSubmit={handleSubmit} className = {styles.add_task_wrapper}>
 			<Field
 				component='input'
 				type='text'
@@ -32,8 +32,8 @@ function AddChangeTaskForm({handleSubmit, ...props}) {
 				className = {styles.input}		
 			></Field>
 			<div className = {styles.buttons_wrapper}>
-				<button type='submit'>Добавить</button>
-				<button type='button'>Назад</button>
+				<button type='submit' className = {styles.form_btn}>Добавить</button>
+				<button type='button' className = {styles.form_btn} onClick = {deactivateCorrectMode}>Назад</button>
 			</div>
 		</form>
 	)
@@ -43,4 +43,4 @@ export default reduxForm({
 	
 	form: 'AddChangeTaskForm'
 
-})(AddChangeTaskForm)
+})(AddTaskForm)

@@ -16,10 +16,10 @@ function parseDate(milliseconds) {
 }
 
 function timeToDeadline(creation, deadline) {
-	const timeDiff 	= Math.round((deadline - creation) / 1000)
-	const minutes 	= Math.floor(timeDiff / 60)
-	const hours 	= Math.floor(minutes / 60)
-	const days 		= Math.floor(hours / 24)
+	const timeDiff 	= Math.round((deadline - (Date.now() + 1000*60*60*3)) / 1000)
+	const minutes 	= Math.floor(timeDiff / 60) >= 0 ? Math.floor(timeDiff / 60) : 0
+	const hours 	= Math.floor(minutes / 60) >= 0 ? Math.floor(minutes / 60) : 0
+	const days 		= Math.floor(hours / 24) >= 0 ? Math.floor(hours / 24) : 0
 
 	return `${days} ${getDaysPostfix(days)} ${hours%24} ${getHoursPostfix(hours%24)} ${minutes%60} ${getMinutesPostfix(minutes%60)}`
 }
@@ -52,7 +52,7 @@ function getDaysPostfix(days) {
 }
 
 function imageChoice(dateOfCreation, deadline) {
-	const now = Date.now() - dateOfCreation
+	const now = (Date.now() + 1000*60*60*3) - dateOfCreation
 	console.log('now' + now)
 	const diff = deadline - dateOfCreation
 	console.log('diff' + diff)
@@ -68,16 +68,17 @@ function imageChoice(dateOfCreation, deadline) {
 		return five
 	else if(now >= diff*(6 / 8) && now <= diff*(7 / 8))
 		return six
-	else if(now >= diff*(7 / 8))
+	else if(now >= diff*(7 / 8) && now <= diff)
 		return seven
-	else if(now >= diff)
+	else if(Date.now() + 1000*60*60*3  >= deadline)
 		return eight
 }
 
 
 
 export default function SingleTask({
-	title, description, dateOfCreation, dateOfLastChange, deadline
+	title, description, dateOfCreation, dateOfLastChange, deadline, activateCorrectMode,
+	addCorrectedTask
 }) {
 	let taskWrapper = {
 		  backgroundImage: `url(${imageChoice(dateOfCreation, deadline)})`,
@@ -88,10 +89,14 @@ export default function SingleTask({
 			margin: '10px',
 			textAlign: 'center',
 			position: 'relative',
-			border: '3px solid var(--side_color_one)'
+			border: '3px solid var(--side_color_one)',
+			transition: '0.3s'
 	}
-
-	return <div style = {taskWrapper}>
+	function changeTask() {
+		activateCorrectMode()
+		addCorrectedTask({title, description, dateOfCreation, dateOfLastChange, deadline})
+	}
+	return <div style = {taskWrapper} onClick = {changeTask} className = {styles.main_task_wrapper}>
 		<div className = {styles.task_text_wrapper}>
 			<div className = {styles.title}>
 				<span className = {styles.viol}>{title}</span>

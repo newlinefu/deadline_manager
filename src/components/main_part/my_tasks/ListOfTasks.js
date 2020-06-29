@@ -4,29 +4,29 @@ import OverdueTasks from './tasks_categories/overdue_tasks/OverdueTasks'
 import ActiveTasks from './tasks_categories/active_tasks/ActiveTasks'
 import AllTasks from './tasks_categories/all_tasks/AllTasks'
 
-export default function ListOfTasks({activateCorrectMode, allTasks}) {
-
+export default function ListOfTasks({activateCorrectMode, allTasks, addCorrectedTask}) {
+	
 	return (
 		<div>
 			<Route path = '/my_tasks/all_tasks' render = {() => (
 				<AllTasks
 					allTasks = {allTasks}
 					activateCorrectMode = {activateCorrectMode}
+					addCorrectedTask = {addCorrectedTask}
 				></AllTasks>
 			)}></Route>
 			<Route path = '/my_tasks/active_tasks' render = {() => (
 				<ActiveTasks
 					allTasks = {allTasks}
+					activateCorrectMode = {activateCorrectMode}
+					addCorrectedTask = {addCorrectedTask}
 				></ActiveTasks>
 			)}></Route>
 			<Route path = '/my_tasks/overdue_tasks' render = {() => (
 				<OverdueTasks
 					allTasks = {allTasks}
-				></OverdueTasks>
-			)}></Route>
-			<Route path = '/my_tasks/overdue_tasks' render = {() => (
-				<OverdueTasks
-					allTasks = {allTasks}
+					activateCorrectMode = {activateCorrectMode}
+					addCorrectedTask = {addCorrectedTask}
 				></OverdueTasks>
 			)}></Route>
 		</div>

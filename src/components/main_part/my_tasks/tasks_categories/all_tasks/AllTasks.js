@@ -3,7 +3,8 @@ import Task from '../../single_task/SingleTask'
 import styles from './all_tasks.module.css'
 import {NavLink} from 'react-router-dom'
 
-export default function AllTasks({allTasks, activateCorrectMode}) {
+export default function AllTasks({allTasks, activateCorrectMode, addCorrectedTask}) {
+
 	return (
 		<div className = {styles.all_tasks_wrapper}>
 		{
@@ -14,6 +15,8 @@ export default function AllTasks({allTasks, activateCorrectMode}) {
 					dateOfCreation = {task.dateOfCreation}
 					dateOfLastChange = {task.dateOfLastChange}
 					deadline = {task.deadline}
+					activateCorrectMode = {activateCorrectMode}
+					addCorrectedTask = {addCorrectedTask}
 				></Task>
 			})
 		}

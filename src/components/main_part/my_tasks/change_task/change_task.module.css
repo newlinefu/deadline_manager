@@ -1,0 +1,70 @@
+.change_task_wrapper {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.input,
+.t_a {
+	font-size: 20px;
+	padding: 10px;
+	display: block;
+	border-radius: 6px;
+	outline: none;
+	margin-top: 10px;
+	width: 80%;
+	border: none;
+	transition: 0.2s;
+}
+
+.input:focus,
+.t_a:focus {
+	box-shadow: 0 0 4px 3px var(--main_color_one);
+}
+
+.t_a {
+	resize: none;
+}
+
+.buttons_wrapper {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+.form_btn {
+	border-radius: 6px;
+	padding: 10px;
+	outline: none;
+	border: 2px solid var(--side_color_one);
+	color: var(--main_color_text);
+	background-color: var(--main_color_one);
+	margin: 20px 20px 20px 0px;
+	font-size: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.form_btn:hover {
+	background-color: var(--main_color_two);
+}
+
+.title {
+	font-weight: bold;
+	font-size: 25px;
+	margin-bottom: 20px;
+	color: var(--main_color_two);
+	width: 83%;
+	text-align: center;
+}
+
+.unchanged_date {
+	font-size: 20px;
+	color: var(--main_color_two);
+	margin-top: 10px;
+}
+
+.unchanged_date > span {
+	font-weight: bold;
+}
