@@ -34,5 +34,9 @@ export const stateSelectors = {
 
 	getCorrectedTask: function(state) {
 		return state.tasks.correctedTask
+	},
+
+	getAddingNewUser: function(state) {
+		return state.authorize.addingNewUser
 	}
 }

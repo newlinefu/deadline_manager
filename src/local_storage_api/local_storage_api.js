@@ -103,10 +103,21 @@ export const request = {
 				400
 			)
 		})
+	},
+
+	deleteUserFromLocalStorage: function(name) {
+		return new Promise( (resolve, reject) => {
+			setTimeout(
+				() => {
+					localStorage.removeItem(name)
+					resolve(true)
+				},
+				400
+			)
+		})
 	}
 }
 
-window.request = request
 function getArrayOfAllUsers() {
 	const arrayOfAllUsers = []
 

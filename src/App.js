@@ -6,13 +6,14 @@ import Authorizate from './components/authorizare/Authorizate'
 import {BrowserRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {initializeApplic} from './redux/reducers/init_app_reducer.js'
-import {putUserToLS, setAuthorizateInStateAC} from './redux/reducers/auth_reducer.js'
+import {putUserToLS, setAuthorizateInStateAC, setAddingNewUserMode} from './redux/reducers/auth_reducer.js'
 import {addAllTasksToState} from './redux/reducers/my_tasks_reducer.js'
 import {stateSelectors} from './selectors/selectors.js'
 
 function App(
-  {name, initialized, initializeApplic, countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState, addAllTasksToState}
-) {
+  {name, initialized, initializeApplic, countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState, 
+    addAllTasksToState, addingNewUser, setAddingNewUserMode
+}) {
 
   useEffect(() => {
       initializeApplic()
@@ -22,11 +23,13 @@ function App(
     return <div>...loading</div>
   if(!name) 
     return <Authorizate 
-            countOfUsers={countOfUsers} 
-            putUserToLS = {putUserToLS}
-            arrayOfUsers = {arrayOfUsers}
-            setAuthorizateInState = {setAuthorizateInState}
-            addAllTasksToState = {addAllTasksToState}
+              countOfUsers={countOfUsers} 
+              putUserToLS = {putUserToLS}
+              arrayOfUsers = {arrayOfUsers}
+              setAuthorizateInState = {setAuthorizateInState}
+              addAllTasksToState = {addAllTasksToState}
+              addingNewUser = {addingNewUser}
+              setAddingNewUserMode = {setAddingNewUserMode}
             ></Authorizate>
   else
     return (
@@ -46,8 +49,8 @@ function mapStateToProps(state) {
     name: stateSelectors.getName(state),
     initialized: stateSelectors.isInitialized(state),
     countOfUsers: stateSelectors.getCountOfUsers(state),
-    arrayOfUsers: stateSelectors.getArrayOfUsers(state)
-
+    arrayOfUsers: stateSelectors.getArrayOfUsers(state),
+    addingNewUser: stateSelectors.getAddingNewUser(state)
   }
 }
 
@@ -56,7 +59,8 @@ export default connect(mapStateToProps, {
   initializeApplic,
   putUserToLS,
   setAuthorizateInState: setAuthorizateInStateAC,
-  addAllTasksToState
+  addAllTasksToState,
+  setAddingNewUserMode
 
 })(App)
 

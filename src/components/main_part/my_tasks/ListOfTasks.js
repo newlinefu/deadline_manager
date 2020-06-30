@@ -3,11 +3,12 @@ import {Route} from 'react-router-dom'
 import OverdueTasks from './tasks_categories/overdue_tasks/OverdueTasks'
 import ActiveTasks from './tasks_categories/active_tasks/ActiveTasks'
 import AllTasks from './tasks_categories/all_tasks/AllTasks'
+import styles from './my_tasks.module.css'
 
 export default function ListOfTasks({activateCorrectMode, allTasks, addCorrectedTask}) {
 	
 	return (
-		<div>
+		<div className = {styles.list_of_tasks_wrapper}>
 			<Route path = '/my_tasks/all_tasks' render = {() => (
 				<AllTasks
 					allTasks = {allTasks}

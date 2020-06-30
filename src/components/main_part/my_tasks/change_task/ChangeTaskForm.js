@@ -18,6 +18,11 @@ function ChangeTaskForm({
 				${dateStringJSON.slice(dateStringJSON.indexOf('T') + 1, dateStringJSON.indexOf('Z') - 7)}`
 	}
 
+	function goBack() {
+		deactivateCorrectMode()
+		addCorrectedTask(null)
+	}
+
 	return (
 		<form onSubmit={handleSubmit} className = {styles.change_task_wrapper}>
 			<div className = {styles.title}>
@@ -56,7 +61,7 @@ function ChangeTaskForm({
 					className = {styles.form_btn} 
 					onClick = {deleteTask}>Удалить
 				</button>
-				<button type='button' className = {styles.form_btn} onClick = {deactivateCorrectMode}>Назад</button>
+				<button type='button' className = {styles.form_btn} onClick = {goBack}>Назад</button>
 			</div>
 		</form>
 	)

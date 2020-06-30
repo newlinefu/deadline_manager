@@ -10,11 +10,25 @@ export default function AddTask({name, addTaskToLSAndState, deactivateCorrectMod
 		addTaskToLSAndState(formData.title, formData.description, `${formData.date_deadline}T${formData.time_deadline}:00.000Z`)
 	}
 
+	function parseMinTime() {
+		const dateStringJSON = (new Date(Date.now() + 1000*60*60*3)).toJSON()
+		return `${dateStringJSON.slice(dateStringJSON.indexOf('T') + 1, dateStringJSON.indexOf('Z') - 7)}`
+	}
+
+	function parseMinDate() {
+		const dateStringJSON = (new Date(Date.now() + 1000*60*60*3)).toJSON()
+		return `${dateStringJSON.slice(0, dateStringJSON.indexOf('T'))}`
+	}
+
 	return (
 		<div>
 			<AddTaskForm 
 				onSubmit={addNewTask} 
-				deactivateCorrectMode = {deactivateCorrectMode}>
+				deactivateCorrectMode = {deactivateCorrectMode}
+				initialValues = { {
+					date_deadline: parseMinDate(),
+					time_deadline: parseMinTime()
+				} }>
 			</AddTaskForm>
 		</div>
 	)

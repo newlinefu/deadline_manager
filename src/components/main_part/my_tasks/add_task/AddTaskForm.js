@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import styles from './add_task.module.css'
 
 function AddTaskForm({handleSubmit, deactivateCorrectMode, ...props}) {
-
+	
 	return (
 		<form onSubmit={handleSubmit} className = {styles.add_task_wrapper}>
 			<Field

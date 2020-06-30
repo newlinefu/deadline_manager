@@ -1,4 +1,8 @@
-import {getCountOfUsersFromLS, getArrayOfUsersFromLS} from './auth_reducer.js'
+import {
+	getCountOfUsersFromLS, 
+	getArrayOfUsersFromLS,
+	setAuthorizateInStateAC
+} from './auth_reducer.js'
 
 const INITIALIZE_APP = 'INITIALIZE_APP'
 
@@ -28,12 +32,18 @@ function initializeAppAC() {
 }
 
 function initializeApplic() {
-	return (dispatch) => {
+	return (dispatch, getState) => {
 		const getCountOfUsers = dispatch(getCountOfUsersFromLS())
 		const getArrayOfUsers = dispatch(getArrayOfUsersFromLS())
 		
 		Promise.all([getCountOfUsers, getArrayOfUsers])
-			.then(() => dispatch(initializeAppAC()))
+			.then(() => {
+				if(getState().authorize.countOfUsers === 1) {
+					const nameOfUser = getState().authorize.arrayOfUsers[0]
+					dispatch(setAuthorizateInStateAC(nameOfUser))
+				}
+				dispatch(initializeAppAC())
+			})
 	}
 }
 

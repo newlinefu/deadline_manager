@@ -14,8 +14,7 @@ export default function ChangeTask({
 	}
 	
 	const deadlineString =  (new Date(correctedTask.deadline)).toJSON()
-	const a = deadlineString.slice(deadlineString.indexOf('T') + 1, deadlineString.indexOf('Z') - 7)
-	debugger
+	
 	return (
 		<div>
 			<ChangeTaskForm 

@@ -13,9 +13,9 @@ export default function MyTasks({
 
 	if(correctMode && !correctedTask)
 		return <AddTask 
-						name = {name}
-						addTaskToLSAndState = {addTaskToLSAndState}
-						deactivateCorrectMode = {deactivateCorrectMode}>
+					name = {name}
+					addTaskToLSAndState = {addTaskToLSAndState}
+					deactivateCorrectMode = {deactivateCorrectMode}>
 				</AddTask>
 	else if (correctMode && correctedTask)
 		return <ChangeTask

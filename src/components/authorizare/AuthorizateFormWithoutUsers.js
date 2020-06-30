@@ -2,7 +2,11 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import styles from './authorizate.module.css'
 
-function AuthorizateFormWithoutUsers({handleSubmit}) {
+function AuthorizateFormWithoutUsers({handleSubmit, addingNewUser, authorize}) {
+	
+	function goBack() {
+		authorize({user: addingNewUser})
+	}
 	return (
 		<form onSubmit = {handleSubmit} className={styles.authorizate_form_without_users_wrapper}>
 			<p>У вас пока нет пользователей. Введите имя нового пользователя, чтобы иметь возможность 
@@ -18,6 +22,7 @@ function AuthorizateFormWithoutUsers({handleSubmit}) {
 			</div>
 			<div>
 				<button type='submit' className = {styles.submit_auth_button}>Add</button>
+				{!addingNewUser || <button type = 'button' onClick = {goBack}>Назад</button>}
 			</div>
 		</form>
 	)

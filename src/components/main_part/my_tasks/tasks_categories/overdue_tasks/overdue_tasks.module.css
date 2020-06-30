@@ -18,6 +18,7 @@
 	transition: 0.3s;
 	outline: none;
 }
+
 .add_new_task > span {
     margin: 0;
     position: absolute;

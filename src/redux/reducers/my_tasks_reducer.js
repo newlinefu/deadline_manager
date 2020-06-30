@@ -5,6 +5,7 @@ const ADD_ALL_TASKS = 'ADD_ALL_TASKS'
 const ACTIVATE_CORRECT_MODE = 'ACTIVATE_CORRECT_MODE'
 const DEACTIVATE_CORRECT_MODE = 'DEACTIVATE_CORRECT_MODE'
 const ADD_CORRECTED_TASK = 'ADD_CORRECTED_TASK'
+const CLEAR_AUTH_IN_TASKS = 'CLEAR_AUTH_IN_TASKS'
 
 const defaultState = {
 	allTasks: [],
@@ -64,6 +65,14 @@ export default function myTasksReducer(state = defaultState, action) {
 				correctedTask: action.correctedTask
 			}
 		}
+		case(CLEAR_AUTH_IN_TASKS): {
+			return {
+				...state,
+				allTasks: null,
+				correctMode: false,
+				correctedTask: null
+			}
+		}
 		default:
 			return state
 	}
@@ -95,6 +104,11 @@ export function activateCorrectMode() {
 export function deactivateCorrectMode() {
 	return {
 		type: DEACTIVATE_CORRECT_MODE
+	}
+}
+export function clearAuthInTasks() {
+	return {
+		type: CLEAR_AUTH_IN_TASKS
 	}
 }
 
