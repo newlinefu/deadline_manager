@@ -1,10 +1,6 @@
 const defaultState = {
 	headerItems: [
 		{
-			name: 'Моя информация',
-			link: '/my_information'
-		},
-		{
 			name: 'Мои задачи',
 			link: '/my_tasks'
 		},

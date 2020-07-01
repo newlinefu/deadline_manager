@@ -2,7 +2,8 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import styles from './authorizate.module.css'
 
-function AuthorizateForm({arrayOfUsers, handleSubmit}) {
+function AuthorizateForm({arrayOfUsers, handleSubmit, loading, ...props}) {
+	
 	return (
 		<form onSubmit={handleSubmit} className={styles.authorizate_form_without_users_wrapper}>
 			<p>
@@ -26,6 +27,7 @@ function AuthorizateForm({arrayOfUsers, handleSubmit}) {
 					})
 			}
 			</div>
+			{props.error ? <div>{props.error}</div> : null}
 			<button type='submit' className={styles.submit_auth_button}>Authorize</button>
 		</form>
 	)

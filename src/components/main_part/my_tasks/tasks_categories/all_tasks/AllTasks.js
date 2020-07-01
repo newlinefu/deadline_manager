@@ -8,7 +8,8 @@ export default function AllTasks({allTasks, activateCorrectMode, addCorrectedTas
 	return (
 		<div className = {styles.all_tasks_wrapper}>
 		{
-			allTasks.map(task => {
+			allTasks
+			? allTasks.map(task => {
 				return <Task
 					title = {task.title}
 					description = {task.description}
@@ -19,6 +20,7 @@ export default function AllTasks({allTasks, activateCorrectMode, addCorrectedTas
 					addCorrectedTask = {addCorrectedTask}
 				></Task>
 			})
+			: null
 		}
 		<button onClick = {activateCorrectMode} className = {styles.add_new_task}><span>+</span></button>
 		</div>

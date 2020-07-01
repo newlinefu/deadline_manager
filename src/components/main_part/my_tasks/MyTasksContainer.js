@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import MyTasks from './MyTasks'
-import {stateSelectors} from '../../../selectors/selectors.js'
+import {stateSelectors, tasksSelectors} from '../../../selectors/selectors.js'
 import {addTaskToLSAndState, 
 	activateCorrectMode, 
 	deactivateCorrectMode,
@@ -12,11 +12,16 @@ import {addTaskToLSAndState,
 
 function mapStateToProps(state) {
 	return {
-		name: stateSelectors.getName(state),
-		correctMode: stateSelectors.getCorrectMode(state),
-		tasksCategories: stateSelectors.getTasksCategories(state),
-		allTasks: stateSelectors.getAllTasks(state),
-		correctedTask: stateSelectors.getCorrectedTask(state)
+		name: 					stateSelectors.getName(state),
+		correctMode: 			stateSelectors.getCorrectMode(state),
+		tasksCategories: 		stateSelectors.getTasksCategories(state),
+		allTasks: 				stateSelectors.getAllTasks(state),
+		correctedTask: 			stateSelectors.getCorrectedTask(state),
+
+		countOfOverdueTasks: 	tasksSelectors.getCountOfOverdueTasks(state),
+		countOfActiveTasks: 	tasksSelectors.getCountOfActiveTasks(state),
+		countOfDayTasks: 		tasksSelectors.getCountOfDayTasks(state),
+		getCountOfWeekTasks: 	tasksSelectors.getCountOfWeekTasks(state)
 	}
 }
 

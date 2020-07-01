@@ -1,13 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import AddTaskForm from './AddTaskForm'
 import {request} from '../../../../local_storage_api/local_storage_api.js'
 
 export default function AddTask({name, addTaskToLSAndState, deactivateCorrectMode}) {
 
+	let [loading, setLoading] = useState(false)
+
 	function addNewTask(formData) {
-		const dead = `${formData.date_deadline}T${formData.time_deadline}:00.000Z`
-		const testDate = Date.parse(dead)
+		setLoading(true)
 		addTaskToLSAndState(formData.title, formData.description, `${formData.date_deadline}T${formData.time_deadline}:00.000Z`)
+			.finally(() => setLoading(false))
 	}
 
 	function parseMinTime() {
@@ -19,17 +21,20 @@ export default function AddTask({name, addTaskToLSAndState, deactivateCorrectMod
 		const dateStringJSON = (new Date(Date.now() + 1000*60*60*3)).toJSON()
 		return `${dateStringJSON.slice(0, dateStringJSON.indexOf('T'))}`
 	}
-
-	return (
-		<div>
-			<AddTaskForm 
-				onSubmit={addNewTask} 
-				deactivateCorrectMode = {deactivateCorrectMode}
-				initialValues = { {
-					date_deadline: parseMinDate(),
-					time_deadline: parseMinTime()
-				} }>
-			</AddTaskForm>
-		</div>
-	)
+	
+	if(loading)
+		return <div>Loading...</div>
+	else
+		return (
+			<div>
+				<AddTaskForm 
+					onSubmit={addNewTask} 
+					deactivateCorrectMode = {deactivateCorrectMode}
+					initialValues = { {
+						date_deadline: parseMinDate(),
+						time_deadline: parseMinTime()
+					} }>
+				</AddTaskForm>
+			</div>
+		)
 }

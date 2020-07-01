@@ -3,6 +3,7 @@ import {
 	getArrayOfUsersFromLS,
 	setAuthorizateInStateAC
 } from './auth_reducer.js'
+import {addAllTasksToState} from './my_tasks_reducer.js'
 
 const INITIALIZE_APP = 'INITIALIZE_APP'
 
@@ -26,12 +27,12 @@ export default function initAppReducer(state = defaultState, action) {
 
 function initializeAppAC() {
 	return {
-		type: INITIALIZE_APP,
-		initialized: true
+		type: 			INITIALIZE_APP,
+		initialized: 	true
 	}
 }
 
-function initializeApplic() {
+export function initializeApplic() {
 	return (dispatch, getState) => {
 		const getCountOfUsers = dispatch(getCountOfUsersFromLS())
 		const getArrayOfUsers = dispatch(getArrayOfUsersFromLS())
@@ -42,11 +43,8 @@ function initializeApplic() {
 					const nameOfUser = getState().authorize.arrayOfUsers[0]
 					dispatch(setAuthorizateInStateAC(nameOfUser))
 				}
-				dispatch(initializeAppAC())
+				return dispatch(addAllTasksToState())
 			})
+			.then(() => dispatch(initializeAppAC()))
 	}
-}
-
-export {
-	initializeApplic
 }

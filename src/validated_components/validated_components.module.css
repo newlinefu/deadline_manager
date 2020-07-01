@@ -1,0 +1,19 @@
+div.error_input_block {
+	background-color: var(--error_color_one);
+	color: white;
+	padding: 3px;
+	text-align: center;
+	font-size: 20px;
+	border-radius: 6px;
+	width: 83%;
+	margin: 0px auto 15px auto;
+}
+
+input.error_input {
+	box-shadow: 0 0 4px 3px var(--error_color_one);
+	border: 2px solid var(--error_color_one);
+}
+
+input.error_input:focus {
+	box-shadow: 0 0 2px 1px var(--error_color_one);
+}

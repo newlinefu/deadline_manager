@@ -7,6 +7,7 @@
 	padding: 20px;
 	background-color: var(--side_color_two);
 	border-radius: 6px;
+	position: relative;
 }
 .authorizate_form_without_users_wrapper > p {
 	font-size: 25px;
@@ -22,9 +23,8 @@
 	margin: 10px 0 5px;
 	border: 2px solid var(--main_color_one);
 }
-
-.input_auth_form:focus {
-	border: 2px solid var(--main_color_two);
+.input_auth_form:focus{
+	box-shadow: 0 0 3px 1.5px var(--main_color_two);
 }
 
 .submit_auth_button {
@@ -37,10 +37,38 @@
 	width: 50%;
 	cursor: pointer;
 	font-size: 20px;
+	transition: 0.2s;
+}
+
+.submit_auth_button.back {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 16px;
+	padding: 6px;
+	width: auto;
+	margin: 5px;
+	background-color: rgb(180, 50, 50);
+	border: none;
+	transition: 0.2s;
+}
+.submit_auth_button.back:hover {
+	background-color: rgb(180, 50, 50);
+	box-shadow: 0 0 3px 2px rgb(140, 50, 50);
+}
+
+.submit_auth_button.back:active {
+	background-color: rgb(140, 50, 50);
+	color: rgb(210, 210, 210);
+	box-shadow: 0 0 3px 2px rgb(140, 50, 50);
 }
 
 .submit_auth_button:hover {
+	box-shadow: 0 0 4px 1.5px var(--main_color_two);
+}
+.submit_auth_button:active {
 	background-color: var(--main_color_two);
+	box-shadow: 0 0 3px 3px var(--main_color_two);
 }
 
 .auth_radio {

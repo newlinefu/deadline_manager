@@ -1,5 +1,6 @@
 import {request} from '../../local_storage_api/local_storage_api.js'
 import {clearAuthInTasks, addAllTasksToState} from './my_tasks_reducer.js'
+import {stopSubmit} from 'redux-form'
 
 const SET_AUTH_IN_STATE = 'SET_AUTH_IN_STATE'
 const SET_COUNT_OF_USERS = 'SET_COUNT_OF_USERS'
@@ -40,10 +41,22 @@ export default function authReducer(state = defaultState, action) {
 	}
 }
 
-function setAuthorizateInStateAC(name) {
+export function setAuthorizateInStateAC(name) {
 	return {
 		type: SET_AUTH_IN_STATE,
 		name
+	}
+}
+export function setAuthorizateWithCondition(name) {
+	return dispatch => {
+		if(name){
+			dispatch(setAuthorizateInStateAC(name))
+			return true
+		}
+		else {
+			dispatch(stopSubmit('AuthorizateForm', {_error: 'Выберите аккаунт'}))
+			return false
+		}
 	}
 }
 
@@ -61,49 +74,55 @@ function setArrayOfUsersAC(arrayOfUsers) {
 	}
 }
 
-function setAddingNewUserMode(addingNewUserMode) {
+export function setAddingNewUserMode(addingNewUserMode) {
 	return {
 		type: SET_ADDING_NEW_USER_MODE,
 		addingNewUserMode
 	}
 }
 
-function getCountOfUsersFromLS() {
+export function getCountOfUsersFromLS() {
 	return async (dispatch) => {
 		const response = await request.getListLenghtCreatedUsersFromLocalStorage()
 		dispatch(setCountOfUsersAC(response))
 	}
 }
 
-function getArrayOfUsersFromLS() {
+export function getArrayOfUsersFromLS() {
 	return async (dispatch) => {
 		const respone = await request.getArrayOfAllUsersFromLocalStorage()
 		dispatch(setArrayOfUsersAC(respone))
 	}
 }
 
-function putUserToLS(name) {
+export function putUserToLS(name) {
 	return async (dispatch, getState) => {
-		await request.putUserToLocalStorage(name)
-		await Promise.all([ dispatch(getCountOfUsersFromLS()), dispatch(getArrayOfUsersFromLS()) ])
-		if(getState().authorize.countOfUsers === 1){
-			dispatch(setAuthorizateInStateAC(name))
-			await dispatch(addAllTasksToState())
+		const response = await request.putUserToLocalStorage(name)
+		if(response) {
+			await Promise.all([ dispatch(getCountOfUsersFromLS()), dispatch(getArrayOfUsersFromLS()) ])
+			if(getState().authorize.countOfUsers === 1){
+				dispatch(setAuthorizateInStateAC(name))
+				await dispatch(addAllTasksToState())
+			}			
+		} else {
+			dispatch(stopSubmit('authorizateFormWithoutUsers', {_error: 'Данный пользователь уже существует'}))
+			return Promise.reject('Данный пользователь уже существует')
 		}
+
 	}
 }
 
-function clearAuth() {
+export function clearAuth() {
 	return (dispatch) => {
 		dispatch(setAuthorizateInStateAC(null))
 		dispatch(clearAuthInTasks())
 	}
 }
 
-function deleteUser() {
+export function deleteUser() {
 	return async (dispatch, getState) => {
-		const name = getState().authorize.name
-		const response = await request.deleteUserFromLocalStorage(name)
+		const name 		= getState().authorize.name
+		const response 	= await request.deleteUserFromLocalStorage(name)
 		if(response) {
 
 			const getCountOfUsers = dispatch(getCountOfUsersFromLS())
@@ -113,16 +132,5 @@ function deleteUser() {
 			dispatch(clearAuth())
 		}
 	}
-}
-
-
-export {
-	setAuthorizateInStateAC,
-	getCountOfUsersFromLS,
-	putUserToLS,
-	getArrayOfUsersFromLS,
-	clearAuth,
-	deleteUser,
-	setAddingNewUserMode
 }
 

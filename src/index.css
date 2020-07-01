@@ -11,6 +11,7 @@ body {
 	--main_color_two: #228B22;
 	--side_color_one: #DDA0DD;
 	--side_color_two: #D8BFD8;
+	--error_color_one: rgb(140, 50, 50);
 
 	height: 500px;
 	width: 100%;

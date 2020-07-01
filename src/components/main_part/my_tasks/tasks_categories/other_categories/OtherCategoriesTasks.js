@@ -1,14 +1,15 @@
 import React from 'react'
 import Task from '../../single_task/SingleTask'
-import styles from './active_tasks.module.css'
+import styles from './other_categories_tasks.module.css'
 import {NavLink} from 'react-router-dom'
 
-export default function ActiveTasks({allTasks, activateCorrectMode, addCorrectedTask}) {
+export default function OtherCategoriesTasks({allTasks, activateCorrectMode, addCorrectedTask, filterCB}) {
 
 	return (
 		<div className = {styles.active_tasks_wrapper}>
 		{
-			allTasks.filter(task => task.deadline > Date.now() + 1000*60*60*3).map(task => {
+			allTasks 
+			? allTasks.filter(filterCB).map(task => {
 				return <Task
 					title = {task.title}
 					description = {task.description}
@@ -19,6 +20,7 @@ export default function ActiveTasks({allTasks, activateCorrectMode, addCorrected
 					addCorrectedTask = {addCorrectedTask}
 				></Task>
 			})
+			: null
 		}
 		</div>
 	)

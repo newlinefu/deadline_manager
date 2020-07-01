@@ -1,30 +1,19 @@
-import {request} from '../../local_storage_api/local_storage_api.js'
+import {request} 	from '../../local_storage_api/local_storage_api.js'
+import {stopSubmit} from 'redux-form'
 
-const ADD_TASK = 'ADD_TASK'
-const ADD_ALL_TASKS = 'ADD_ALL_TASKS'
-const ACTIVATE_CORRECT_MODE = 'ACTIVATE_CORRECT_MODE'
-const DEACTIVATE_CORRECT_MODE = 'DEACTIVATE_CORRECT_MODE'
-const ADD_CORRECTED_TASK = 'ADD_CORRECTED_TASK'
-const CLEAR_AUTH_IN_TASKS = 'CLEAR_AUTH_IN_TASKS'
+const ADD_TASK 					= 'ADD_TASK'
+const ADD_ALL_TASKS 			= 'ADD_ALL_TASKS'
+const ACTIVATE_CORRECT_MODE 	= 'ACTIVATE_CORRECT_MODE'
+const DEACTIVATE_CORRECT_MODE 	= 'DEACTIVATE_CORRECT_MODE'
+const ADD_CORRECTED_TASK 		= 'ADD_CORRECTED_TASK'
+const CLEAR_AUTH_IN_TASKS 		= 'CLEAR_AUTH_IN_TASKS'
 
 const defaultState = {
-	allTasks: [],
-	correctMode: false,
-	correctedTask: null,
-	tasksCategories: [
-		{
-			title: 'Все задачи',
-			link: '/my_tasks/all_tasks'
-		},
-		{
-			title: 'Активные задачи',
-			link: '/my_tasks/active_tasks'
-		},
-		{
-			title: 'Просроченные задачи',
-			link: '/my_tasks/overdue_tasks'
-		}
-	]
+
+	allTasks: 		[],
+	correctMode: 	false,
+	correctedTask: 	null
+	
 }
 
 export default function myTasksReducer(state = defaultState, action) {
@@ -33,11 +22,13 @@ export default function myTasksReducer(state = defaultState, action) {
 			return {
 				...state,
 				allTasks: [...state.allTasks, {
-					title: action.title,
-					description: action.description,
-					dateOfCreation: action.dateOfCreation,
-					dateOfLastChange: action.dateOfLastChange,
-					deadline: Date.parse(action.deadline)
+
+					title: 				action.title,
+					description: 		action.description,
+					dateOfCreation: 	action.dateOfCreation,
+					dateOfLastChange: 	action.dateOfLastChange,
+					deadline: 			Date.parse(action.deadline)
+
 				}]
 			}
 		}
@@ -68,9 +59,9 @@ export default function myTasksReducer(state = defaultState, action) {
 		case(CLEAR_AUTH_IN_TASKS): {
 			return {
 				...state,
-				allTasks: null,
-				correctMode: false,
-				correctedTask: null
+				allTasks: 		null,
+				correctMode: 	false,
+				correctedTask: 	null
 			}
 		}
 		default:
@@ -115,20 +106,19 @@ export function clearAuthInTasks() {
 export function addCorrectedTaskAC(correctedTask) {
 	if(correctedTask === null)
 		return {
-			type: ADD_CORRECTED_TASK,
-			correctedTask: null			
+			type: 			ADD_CORRECTED_TASK,
+			correctedTask: 	null			
 		}
 	return {
-		type: ADD_CORRECTED_TASK,
-		correctedTask: {...correctedTask}
+		type: 			ADD_CORRECTED_TASK,
+		correctedTask: 	{...correctedTask}
 	}
 }
 
 export function addTaskToLSAndState(title, description, deadline) {
 	return async (dispatch, getState) => {
-		debugger
-		const dateOfCreation = Date.now() + 1000*60*60*3
-		const name = getState().authorize.name
+		const dateOfCreation 	= Date.now() + 1000*60*60*3
+		const name 				= getState().authorize.name
 
 		const response = await request.addNewTaskToLocalStorage(
 			name,
@@ -141,6 +131,9 @@ export function addTaskToLSAndState(title, description, deadline) {
 		if(response){
 			dispatch(addTaskAC(title, description, dateOfCreation, dateOfCreation, deadline))
 			dispatch(deactivateCorrectMode())
+		} else {
+			dispatch(stopSubmit('AddTaskForm', {_error: 'Задача с таким именем уже существует'}))
+			return Promise.reject('Задача с таким именем уже существует')
 		}
 	}
 }
@@ -157,8 +150,8 @@ export function addAllTasksToState() {
 
 export function changeTaskInStateAndLS(title, description, deadline) {
 	return async (dispatch, getState) => {
-		const name = getState().authorize.name
-		const response = await request.changeTaskInLocalStorage(
+		const name 		= getState().authorize.name
+		const response 	= await request.changeTaskInLocalStorage(
 			name, title, description, Date.now() + 1000*60*60*3, Date.parse(deadline)
 		)
 		if(response){
@@ -170,10 +163,10 @@ export function changeTaskInStateAndLS(title, description, deadline) {
 
 export function deleteTaskInLSAndState(title) {
 	return async (dispatch, getState) => {
-		const name = getState().authorize.name
-		const response = await request.deleteTaskFromLocalStorage(name, title)
+		const name 		= getState().authorize.name
+		const response 	= await request.deleteTaskFromLocalStorage(name, title)
 		if(response) {
-			dispatch(addAllTasksToState())
+			await dispatch(addAllTasksToState())
 		}
 	}
 }

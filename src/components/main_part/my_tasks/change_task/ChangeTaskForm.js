@@ -1,15 +1,21 @@
-import React from 'react'
+import React 				from 'react'
 import { Field, reduxForm } from 'redux-form'
-import styles from './change_task.module.css'
+import styles 				from './change_task.module.css'
 
 function ChangeTaskForm({
-	handleSubmit, deactivateCorrectMode, deleteTaskInLSAndState, correctedTask, addCorrectedTask
+	handleSubmit, deactivateCorrectMode, deleteTaskInLSAndState, correctedTask, addCorrectedTask,
+	setLoading
 }) {
 
 	function deleteTask() {
+		setLoading(true)
 		deleteTaskInLSAndState(correctedTask.title)
-		deactivateCorrectMode()
-		addCorrectedTask(null)
+			.then(() => {
+				deactivateCorrectMode()
+				addCorrectedTask(null)			
+			})
+			.finally(() => setLoading(false))
+
 	}
 
 	function parseJSONDate(dateMill) {
@@ -29,39 +35,47 @@ function ChangeTaskForm({
 				{correctedTask.title}
 			</div>
 			<Field
-				component='textarea'
-				placeholder='Описание задачи'
-				name='description'		
-				className = {styles.t_a}
+				component 	= 'textarea'
+				placeholder = 'Описание задачи'
+				name 		= 'description'		
+				className 	= {styles.t_a}
 			></Field>
 			<Field
-				component='input'
-				type='date'
-				name='date_deadline'
-				className = {styles.input}		
+				component 	= 'input'
+				type 		= 'date'
+				name 		= 'date_deadline'
+				className 	= {styles.input}		
 			></Field>
 			<Field
-				component='input'
-				type='time'
-				name='time_deadline'
-				className = {styles.input}		
+				component 	='input'
+				type 		='time'
+				name 		='time_deadline'
+				className 	= {styles.input}		
 			></Field>
 			<div className = {styles.unchanged_date}>
 				<span>Время создания:</span> {parseJSONDate(correctedTask.dateOfCreation)}
 			</div>
-			{correctedTask.dateOfCreation === correctedTask.dateOfLastChange || (
-				<div className = {styles.unchanged_date}>
-					<span>Последнее изменение:</span> {parseJSONDate(correctedTask.dateOfLastChange)}
-				</div>
-			)}
+			{
+				correctedTask.dateOfCreation === correctedTask.dateOfLastChange 
+				|| <div className = {styles.unchanged_date}>
+						<span>Последнее изменение:</span> {parseJSONDate(correctedTask.dateOfLastChange)}
+					</div>
+			}
 			<div className = {styles.buttons_wrapper}>
-				<button type='submit' className = {styles.form_btn}>Изменить</button>
 				<button 
-					type='button' 
-					className = {styles.form_btn} 
-					onClick = {deleteTask}>Удалить
+					type 		= 'submit' 
+					className 	= {styles.form_btn}
+				>Изменить</button>
+				<button 
+					type 		= 'button' 
+					className 	= {styles.form_btn} 
+					onClick 	= {deleteTask}>Удалить
 				</button>
-				<button type='button' className = {styles.form_btn} onClick = {goBack}>Назад</button>
+				<button 
+					type 		= 'button' 
+					className 	= {styles.form_btn} 
+					onClick 	= {goBack}
+				>Назад</button>
 			</div>
 		</form>
 	)

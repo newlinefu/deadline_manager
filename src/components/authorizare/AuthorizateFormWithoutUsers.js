@@ -1,29 +1,47 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import styles from './authorizate.module.css'
+import ValidatedInput from '../../validated_components/ValidatedInput'
+import {isEmptyConstructor} from '../../validators/validators.js'
 
-function AuthorizateFormWithoutUsers({handleSubmit, addingNewUser, authorize}) {
+const isEmptyAuth = isEmptyConstructor('Введите имя пользователя')
+
+function AuthorizateFormWithoutUsers({handleSubmit, addingNewUser, authorize, loading, ...props}) {
 	
 	function goBack() {
 		authorize({user: addingNewUser})
 	}
+	
 	return (
 		<form onSubmit = {handleSubmit} className={styles.authorizate_form_without_users_wrapper}>
-			<p>У вас пока нет пользователей. Введите имя нового пользователя, чтобы иметь возможность 
-			управлять заметками</p>
+			<p>
+				{
+					!addingNewUser
+					? 'У вас пока нет пользователей. Введите имя нового пользователя, чтобы иметь возможность управлять заметками'
+					: 'Добавить нового пользователя'
+				}
+			</p>
 			<div>
 				<Field
-					component='input'
+					component={ValidatedInput}
 					type='text'
 					name = 'input_name'
 					className = {styles.input_auth_form}
 					placeholder = 'Enter username'
+					validate = {isEmptyAuth}
 				></Field>
 			</div>
+			{props.error ? <div>{props.error}</div> : null}
 			<div>
-				<button type='submit' className = {styles.submit_auth_button}>Add</button>
-				{!addingNewUser || <button type = 'button' onClick = {goBack}>Назад</button>}
+				{
+					!loading 
+					? <button type='submit' className = {styles.submit_auth_button}>Add</button>
+					: <div>...Loading</div>
+				}
 			</div>
+			{!addingNewUser || <button type = 'button' 
+				onClick = {goBack} 
+				className = {`${styles.submit_auth_button} ${styles.back}`}>X</button>}
 		</form>
 	)
 }

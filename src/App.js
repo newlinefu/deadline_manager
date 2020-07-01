@@ -6,13 +6,13 @@ import Authorizate from './components/authorizare/Authorizate'
 import {BrowserRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {initializeApplic} from './redux/reducers/init_app_reducer.js'
-import {putUserToLS, setAuthorizateInStateAC, setAddingNewUserMode} from './redux/reducers/auth_reducer.js'
+import {putUserToLS, setAuthorizateInStateAC, setAddingNewUserMode, setAuthorizateWithCondition} from './redux/reducers/auth_reducer.js'
 import {addAllTasksToState} from './redux/reducers/my_tasks_reducer.js'
 import {stateSelectors} from './selectors/selectors.js'
 
 function App(
   {name, initialized, initializeApplic, countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState, 
-    addAllTasksToState, addingNewUser, setAddingNewUserMode
+    addAllTasksToState, addingNewUser, setAddingNewUserMode, setAuthorizateWithCondition
 }) {
 
   useEffect(() => {
@@ -30,6 +30,7 @@ function App(
               addAllTasksToState = {addAllTasksToState}
               addingNewUser = {addingNewUser}
               setAddingNewUserMode = {setAddingNewUserMode}
+              setAuthorizateWithCondition = {setAuthorizateWithCondition}
             ></Authorizate>
   else
     return (
@@ -60,7 +61,8 @@ export default connect(mapStateToProps, {
   putUserToLS,
   setAuthorizateInState: setAuthorizateInStateAC,
   addAllTasksToState,
-  setAddingNewUserMode
+  setAddingNewUserMode,
+  setAuthorizateWithCondition
 
 })(App)
 

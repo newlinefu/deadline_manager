@@ -1,7 +1,7 @@
 const defaultLocalStorageObject = {
-	name: null,
+	name: 	null,
 	status: null,
-	tasks: []
+	tasks: 	[]
 }
 
 export const request = {
@@ -10,7 +10,7 @@ export const request = {
 		return new Promise((resolve, reject) => {
 			setTimeout(
 				() => resolve(localStorage.length),
-				400
+				1500
 			)
 		})
 	},
@@ -19,11 +19,20 @@ export const request = {
 		return new Promise((resolve, reject) => {
 			setTimeout(
 				() => {
-					const addingUserObject = JSON.stringify({...defaultLocalStorageObject, name: String(name)})
-					localStorage.setItem(String(name), addingUserObject)
-					resolve(true)
+					const addingUserObject 	= JSON.stringify({...defaultLocalStorageObject, name: String(name)})
+					const existedUser 		= localStorage.getItem(String(name))
+					if(!existedUser) {
+
+						localStorage.setItem(String(name), addingUserObject)
+						resolve(true)
+
+					} else {
+
+						resolve(false)
+
+					}
 				},
-				400
+				1500
 			)
 		})
 	},
@@ -31,10 +40,8 @@ export const request = {
 	getArrayOfAllUsersFromLocalStorage: function() {
 		return new Promise( (resolve, reject) => {
 			setTimeout(
-				() => {
-					resolve(getArrayOfAllUsers())
-				},
-				400
+				() => resolve(getArrayOfAllUsers()),
+				1500
 			)
 		})
 	},
@@ -44,17 +51,26 @@ export const request = {
 			setTimeout(
 				() => {
 					const localStorageObject = JSON.parse(localStorage.getItem(name))
-					localStorageObject.tasks.push({
-						title, 
-						description, 
-						dateOfCreation, 
-						dateOfLastChange,
-						deadline
-					})
-					localStorage.setItem(name, JSON.stringify(localStorageObject))
-					resolve(true)
+					if(!localStorageObject.tasks.filter(task => task.title === title).length) {
+
+						localStorageObject.tasks.push({
+							title, 
+							description, 
+							dateOfCreation, 
+							dateOfLastChange,
+							deadline
+						})
+						localStorage.setItem(name, JSON.stringify(localStorageObject))
+						resolve(true)		
+
+					} else {
+
+						resolve(false)
+
+					}
+
 				},
-				400
+				1500
 			)
 		})
 	},
@@ -66,7 +82,7 @@ export const request = {
 					const localStorageObject = JSON.parse(localStorage.getItem(name))
 					resolve(localStorageObject.tasks)
 				},
-				400
+				1500
 			)
 		})
 	},
@@ -79,14 +95,18 @@ export const request = {
 					localStorageObject.tasks = localStorageObject.tasks.map( task => {
 						if(task.title === title)
 							return {
-								title, description, dateOfCreation: task.dateOfCreation, dateOfLastChange, deadline
+								title, 
+								description, 
+								dateOfCreation: task.dateOfCreation, 
+								dateOfLastChange, 
+								deadline
 							}
 						return task
 					})
 					localStorage.setItem(name, JSON.stringify(localStorageObject))
 					resolve(true)					
 				},
-				400
+				1500
 			)
 		})
 	},
@@ -100,7 +120,7 @@ export const request = {
 					localStorage.setItem(name, JSON.stringify(localStorageObject))
 					resolve(true)
 				},
-				400
+				1500
 			)
 		})
 	},
@@ -112,7 +132,7 @@ export const request = {
 					localStorage.removeItem(name)
 					resolve(true)
 				},
-				400
+				1500
 			)
 		})
 	}
