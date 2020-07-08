@@ -1,23 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.5f361e03.chunk.css",
-    "main.js": "/static/js/main.cebdc774.chunk.js",
-    "main.js.map": "/static/js/main.cebdc774.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.fe3a84e4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.fe3a84e4.js.map",
-    "static/js/2.f9d8fe38.chunk.js": "/static/js/2.f9d8fe38.chunk.js",
-    "static/js/2.f9d8fe38.chunk.js.map": "/static/js/2.f9d8fe38.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.c6985dfda373c00240fc4bc5dca6a6dc.js": "/precache-manifest.c6985dfda373c00240fc4bc5dca6a6dc.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.f9d8fe38.chunk.js.LICENSE.txt": "/static/js/2.f9d8fe38.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+    "main.css": "/deadline_manager/static/css/main.bcd18083.chunk.css",
+    "main.js": "/deadline_manager/static/js/main.c9c3c5b7.chunk.js",
+    "main.js.map": "/deadline_manager/static/js/main.c9c3c5b7.chunk.js.map",
+    "runtime-main.js": "/deadline_manager/static/js/runtime-main.0f870e95.js",
+    "runtime-main.js.map": "/deadline_manager/static/js/runtime-main.0f870e95.js.map",
+    "static/js/2.1e681bf5.chunk.js": "/deadline_manager/static/js/2.1e681bf5.chunk.js",
+    "static/js/2.1e681bf5.chunk.js.map": "/deadline_manager/static/js/2.1e681bf5.chunk.js.map",
+    "index.html": "/deadline_manager/index.html",
+    "precache-manifest.da0fea767839514e52fa650d61f0e4b2.js": "/deadline_manager/precache-manifest.da0fea767839514e52fa650d61f0e4b2.js",
+    "service-worker.js": "/deadline_manager/service-worker.js",
+    "static/css/main.bcd18083.chunk.css.map": "/deadline_manager/static/css/main.bcd18083.chunk.css.map",
+    "static/js/2.1e681bf5.chunk.js.LICENSE.txt": "/deadline_manager/static/js/2.1e681bf5.chunk.js.LICENSE.txt",
+    "static/media/1.jpg": "/deadline_manager/static/media/1.3645c95e.jpg",
+    "static/media/2.jpg": "/deadline_manager/static/media/2.4d38d30f.jpg",
+    "static/media/4.jpg": "/deadline_manager/static/media/4.5b01f2e0.jpg",
+    "static/media/5.jpg": "/deadline_manager/static/media/5.51ac57fa.jpg",
+    "static/media/6.jpg": "/deadline_manager/static/media/6.3bcf4f58.jpg",
+    "static/media/7.jpg": "/deadline_manager/static/media/7.7dbfcfc2.jpg",
+    "static/media/8.jpg": "/deadline_manager/static/media/8.6d774a9b.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.fe3a84e4.js",
-    "static/js/2.f9d8fe38.chunk.js",
-    "static/css/main.5f361e03.chunk.css",
-    "static/js/main.cebdc774.chunk.js"
+    "static/js/runtime-main.0f870e95.js",
+    "static/js/2.1e681bf5.chunk.js",
+    "static/css/main.bcd18083.chunk.css",
+    "static/js/main.c9c3c5b7.chunk.js"
   ]
 }
