@@ -10,7 +10,7 @@ export const request = {
 		return new Promise((resolve, reject) => {
 			setTimeout(
 				() => resolve(localStorage.length),
-				1500
+				100
 			)
 		})
 	},
@@ -32,7 +32,7 @@ export const request = {
 
 					}
 				},
-				1500
+				100
 			)
 		})
 	},
@@ -41,7 +41,7 @@ export const request = {
 		return new Promise( (resolve, reject) => {
 			setTimeout(
 				() => resolve(getArrayOfAllUsers()),
-				1500
+				100
 			)
 		})
 	},
@@ -70,7 +70,7 @@ export const request = {
 					}
 
 				},
-				1500
+				100
 			)
 		})
 	},
@@ -82,7 +82,7 @@ export const request = {
 					const localStorageObject = JSON.parse(localStorage.getItem(name))
 					resolve(localStorageObject.tasks)
 				},
-				1500
+				100
 			)
 		})
 	},
@@ -106,7 +106,7 @@ export const request = {
 					localStorage.setItem(name, JSON.stringify(localStorageObject))
 					resolve(true)					
 				},
-				1500
+				100
 			)
 		})
 	},
@@ -120,7 +120,7 @@ export const request = {
 					localStorage.setItem(name, JSON.stringify(localStorageObject))
 					resolve(true)
 				},
-				1500
+				100
 			)
 		})
 	},
@@ -132,7 +132,7 @@ export const request = {
 					localStorage.removeItem(name)
 					resolve(true)
 				},
-				1500
+				100
 			)
 		})
 	}

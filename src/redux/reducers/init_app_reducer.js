@@ -42,8 +42,9 @@ export function initializeApplic() {
 				if(getState().authorize.countOfUsers === 1) {
 					const nameOfUser = getState().authorize.arrayOfUsers[0]
 					dispatch(setAuthorizateInStateAC(nameOfUser))
+					dispatch(addAllTasksToState())
 				}
-				return dispatch(addAllTasksToState())
+				return true
 			})
 			.then(() => dispatch(initializeAppAC()))
 	}

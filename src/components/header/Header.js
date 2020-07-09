@@ -40,7 +40,7 @@ function Header({headerItems, name, clearAuth, deleteUser, setAddingNewUserMode}
 			className = {styles.header_nav_user}
 			onMouseOver = {activateButtonsShow}
 			onMouseOut = {deactivateButtonsShow}>
-			{loading ? <div>loading...</div> : name}
+			{loading ? <div>loading...</div> : <div>{name}</div>}
 			{
 				buttonsShow && !loading
 				? (<div className = {styles.buttons_block}>
@@ -48,7 +48,7 @@ function Header({headerItems, name, clearAuth, deleteUser, setAddingNewUserMode}
 						<button onClick = {delUserWithLoading}>	Удалить					</button>
 						<button onClick = {addNewUser}>			Добавить пользователя	</button>
 					</div>)
-				: null
+				: null 
 			}
 		</div>
 			{
