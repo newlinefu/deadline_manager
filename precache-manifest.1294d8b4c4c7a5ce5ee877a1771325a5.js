@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "593744399738e2fde2db657a0bc1543f",
+    "revision": "617eb336bd68499cd85068d02446d809",
     "url": "/deadline_manager/index.html"
   },
   {
-    "revision": "ef85a3c8afa7758fd104",
-    "url": "/deadline_manager/static/css/main.bcd18083.chunk.css"
+    "revision": "d2be97efe99671478b7e",
+    "url": "/deadline_manager/static/css/main.6a7a316b.chunk.css"
   },
   {
-    "revision": "217816cd4ad940dad591",
-    "url": "/deadline_manager/static/js/2.1e681bf5.chunk.js"
+    "revision": "cab7490fc3238b6b9b42",
+    "url": "/deadline_manager/static/js/2.2368f338.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/deadline_manager/static/js/2.1e681bf5.chunk.js.LICENSE.txt"
+    "url": "/deadline_manager/static/js/2.2368f338.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ef85a3c8afa7758fd104",
-    "url": "/deadline_manager/static/js/main.c9c3c5b7.chunk.js"
+    "revision": "d2be97efe99671478b7e",
+    "url": "/deadline_manager/static/js/main.e190b9a1.chunk.js"
   },
   {
     "revision": "63367484dc2b368dc3e0",
