@@ -3,11 +3,7 @@ const defaultState = {
 		{
 			name: 'Мои задачи',
 			link: '/my_tasks'
-		},
-		{
-			name: 'О приложении',
-			link: '/about_application'
-		},
+		}
 	]
 }
 

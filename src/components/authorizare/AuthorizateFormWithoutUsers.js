@@ -1,7 +1,7 @@
-import React from 'react'
-import {Field, reduxForm} from 'redux-form'
-import styles from './authorizate.module.css'
-import ValidatedInput from '../../validated_components/ValidatedInput'
+import React 				from 'react'
+import {Field, reduxForm} 	from 'redux-form'
+import styles 				from './authorizate.module.css'
+import ValidatedInput 		from '../../validated_components/ValidatedInput'
 import {isEmptyConstructor} from '../../validators/validators.js'
 
 const isEmptyAuth = isEmptyConstructor('Введите имя пользователя')
@@ -23,12 +23,12 @@ function AuthorizateFormWithoutUsers({handleSubmit, addingNewUser, authorize, lo
 			</p>
 			<div>
 				<Field
-					component={ValidatedInput}
-					type='text'
-					name = 'input_name'
-					className = {styles.input_auth_form}
+					component 	= {ValidatedInput}
+					type 		= 'text'
+					name 		= 'input_name'
+					className 	= {styles.input_auth_form}
 					placeholder = 'Enter username'
-					validate = {isEmptyAuth}
+					validate 	= {isEmptyAuth}
 				></Field>
 			</div>
 			{props.error ? <div>{props.error}</div> : null}

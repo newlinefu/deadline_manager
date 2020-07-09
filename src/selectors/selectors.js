@@ -84,7 +84,7 @@ export const tasksSelectors = {
 		tasks => {
 			if(tasks)
 				return tasks.reduce((acc, task) => (
-					task.deadline - Date.now() + 1000*60*60*3 <= 1000*60*60*24*7  && task.deadline > Date.now() + 1000*60*60*3
+					task.deadline - Date.now() + 1000*60*60*3 <= 1000*60*60*24*7 && task.deadline > Date.now() + 1000*60*60*3
 					? acc + 1 
 					: acc),
 					0)

@@ -1,17 +1,20 @@
-import {request} from '../../local_storage_api/local_storage_api.js'
-import {clearAuthInTasks, addAllTasksToState} from './my_tasks_reducer.js'
+import {request} 	from '../../local_storage_api/local_storage_api.js'
+import {
+	clearAuthInTasks, 
+	addAllTasksToState
+} 					from './my_tasks_reducer.js'
 import {stopSubmit} from 'redux-form'
 
-const SET_AUTH_IN_STATE = 'SET_AUTH_IN_STATE'
-const SET_COUNT_OF_USERS = 'SET_COUNT_OF_USERS'
-const SET_ARRAY_OF_USERS = 'SET_ARRAY_OF_USERS'
-const SET_ADDING_NEW_USER_MODE = 'SET_ADDING_NEW_USER_MODE'
+const SET_AUTH_IN_STATE 		= 'SET_AUTH_IN_STATE'
+const SET_COUNT_OF_USERS 		= 'SET_COUNT_OF_USERS'
+const SET_ARRAY_OF_USERS 		= 'SET_ARRAY_OF_USERS'
+const SET_ADDING_NEW_USER_MODE 	= 'SET_ADDING_NEW_USER_MODE'
 
 const defaultState = {
-	name: null,
-	countOfUsers: null,
-	arrayOfUsers: null,
-	addingNewUser: null
+	name: 			null,
+	countOfUsers: 	null,
+	arrayOfUsers: 	null,
+	addingNewUser: 	null
 }
 
 export default function authReducer(state = defaultState, action) {

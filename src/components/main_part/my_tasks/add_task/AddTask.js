@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import AddTaskForm from './AddTaskForm'
-import {request} from '../../../../local_storage_api/local_storage_api.js'
+import React, {useState} 	from 'react'
+import AddTaskForm 			from './AddTaskForm'
+import {request} 			from '../../../../local_storage_api/local_storage_api.js'
 
 export default function AddTask({name, addTaskToLSAndState, deactivateCorrectMode}) {
 
@@ -28,9 +28,9 @@ export default function AddTask({name, addTaskToLSAndState, deactivateCorrectMod
 		return (
 			<div>
 				<AddTaskForm 
-					onSubmit={addNewTask} 
-					deactivateCorrectMode = {deactivateCorrectMode}
-					initialValues = { {
+					onSubmit 				= {addNewTask} 
+					deactivateCorrectMode 	= {deactivateCorrectMode}
+					initialValues 			= { {
 						date_deadline: parseMinDate(),
 						time_deadline: parseMinTime()
 					} }>

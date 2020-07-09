@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './validated_components.module.css'
+import React 	from 'react'
+import styles 	from './validated_components.module.css'
 
 export default function ValiadatedInput({input, meta, ...props}) {
 	return (

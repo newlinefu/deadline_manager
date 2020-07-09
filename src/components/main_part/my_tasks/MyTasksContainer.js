@@ -1,14 +1,17 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import MyTasks from './MyTasks'
-import {stateSelectors, tasksSelectors} from '../../../selectors/selectors.js'
+import React 		from 'react'
+import {connect} 	from 'react-redux'
+import MyTasks 		from './MyTasks'
+import {
+	stateSelectors, 
+	tasksSelectors
+} 					from '../../../selectors/selectors.js'
 import {addTaskToLSAndState, 
 	activateCorrectMode, 
 	deactivateCorrectMode,
 	changeTaskInStateAndLS,
 	addCorrectedTaskAC,
 	deleteTaskInLSAndState
-} from '../../../redux/reducers/my_tasks_reducer.js'
+} 					from '../../../redux/reducers/my_tasks_reducer.js'
 
 function mapStateToProps(state) {
 	return {

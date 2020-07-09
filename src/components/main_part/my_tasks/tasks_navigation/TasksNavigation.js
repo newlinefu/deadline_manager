@@ -1,6 +1,6 @@
-import React from 'react'
-import {NavLink} from 'react-router-dom'
-import styles from './tasks_navigation.module.css'
+import React 		from 'react'
+import {NavLink} 	from 'react-router-dom'
+import styles 		from './tasks_navigation.module.css'
 
 export default function TasksNavigation({
 	countOfOverdueTasks, countOfActiveTasks, countOfDayTasks, getCountOfWeekTasks

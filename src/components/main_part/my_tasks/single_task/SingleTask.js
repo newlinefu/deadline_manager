@@ -1,13 +1,13 @@
-import React from 'react'
-import styles from './single_task.module.css'
-import one from '../../../../resourses/1.jpg'
-import two from '../../../../resourses/2.jpg'
-import three from '../../../../resourses/3.jpg'
-import four from '../../../../resourses/4.jpg'
-import five from '../../../../resourses/5.jpg'
-import six from '../../../../resourses/6.jpg'
-import seven from '../../../../resourses/7.jpg'
-import eight from '../../../../resourses/8.jpg'
+import React 	from 'react'
+import styles 	from './single_task.module.css'
+import one 		from '../../../../resourses/1.jpg'
+import two 		from '../../../../resourses/2.jpg'
+import three 	from '../../../../resourses/3.jpg'
+import four 	from '../../../../resourses/4.jpg'
+import five 	from '../../../../resourses/5.jpg'
+import six 		from '../../../../resourses/6.jpg'
+import seven 	from '../../../../resourses/7.jpg'
+import eight 	from '../../../../resourses/8.jpg'
 
 
 function parseDate(milliseconds) {

@@ -2,7 +2,7 @@ import {
 	getCountOfUsersFromLS, 
 	getArrayOfUsersFromLS,
 	setAuthorizateInStateAC
-} from './auth_reducer.js'
+} 							from './auth_reducer.js'
 import {addAllTasksToState} from './my_tasks_reducer.js'
 
 const INITIALIZE_APP = 'INITIALIZE_APP'

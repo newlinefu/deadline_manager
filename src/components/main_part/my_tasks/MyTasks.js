@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
-import {Route} from 'react-router-dom'
-import ListOfTasks from './ListOfTasks'
-import AddTask from './add_task/AddTask'
-import ChangeTask from './change_task/ChangeTask'
-import TasksNavigation from './tasks_navigation/TasksNavigation'
-import styles from './my_tasks.module.css'
+import React, {useState} 	from 'react'
+import {Route} 				from 'react-router-dom'
+import ListOfTasks 			from './ListOfTasks'
+import AddTask 				from './add_task/AddTask'
+import ChangeTask 			from './change_task/ChangeTask'
+import TasksNavigation 		from './tasks_navigation/TasksNavigation'
+import styles 				from './my_tasks.module.css'
 
 export default function MyTasks({
 	name, addTaskToLSAndState, correctMode, activateCorrectMode, tasksCategories, allTasks, 

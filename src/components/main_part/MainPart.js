@@ -1,7 +1,7 @@
-import React from 'react'
-import {Route} from 'react-router-dom'
+import React 			from 'react'
+import {Route} 			from 'react-router-dom'
 import MyTasksContainer from './my_tasks/MyTasksContainer'
-import styles from './main_part.module.css'
+import styles 			from './main_part.module.css'
 
 function MainPart() {
 	return (

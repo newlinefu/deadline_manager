@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import AuthorizateFormWithoutUsers from './AuthorizateFormWithoutUsers'
-import AuthorizateForm from './AuthorizateForm'
+import React, {useState} 			from 'react'
+import AuthorizateFormWithoutUsers 	from './AuthorizateFormWithoutUsers'
+import AuthorizateForm 				from './AuthorizateForm'
 
 function Authorizate({
 	countOfUsers, putUserToLS, arrayOfUsers, setAuthorizateInState, addAllTasksToState, 
@@ -32,16 +32,16 @@ function Authorizate({
 
 	if(countOfUsers === 0 || addingNewUser) 
 		return <AuthorizateFormWithoutUsers
-			onSubmit = {registrateUser}
-			addingNewUser = {addingNewUser}
-			authorize = {authorizeWithout}
-			loading = {loading}
+			onSubmit 		= {registrateUser}
+			addingNewUser 	= {addingNewUser}
+			authorize 		= {authorizeWithout}
+			loading 		= {loading}
 		></AuthorizateFormWithoutUsers>
 	else
 		return <AuthorizateForm
-			arrayOfUsers = {arrayOfUsers}
-			onSubmit={authorizeWith}
-			loading = {loading}
+			arrayOfUsers 	= {arrayOfUsers}
+			onSubmit 		={authorizeWith}
+			loading 		= {loading}
 		></AuthorizateForm>
 }
 

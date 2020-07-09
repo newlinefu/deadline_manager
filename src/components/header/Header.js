@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
-import styles from './header.module.css'
-import {NavLink} from 'react-router-dom'
+import React, {useState} 	from 'react'
+import styles 				from './header.module.css'
+import {NavLink} 			from 'react-router-dom'
 
 function Header({headerItems, name, clearAuth, deleteUser, setAddingNewUserMode}) {
 
-	let [buttonsShow, setButtonsShow] = useState(false)
-	let [loading, setLoading] = useState(false)
+	let [buttonsShow, setButtonsShow] 	= useState(false)
+	let [loading, setLoading] 			= useState(false)
 
 	
 	function activateButtonsShow(e) {
@@ -37,9 +37,9 @@ function Header({headerItems, name, clearAuth, deleteUser, setAddingNewUserMode}
 	return (
 		<header className={styles.header_wrapper}>
 		<div 
-			className = {styles.header_nav_user}
+			className 	= {styles.header_nav_user}
 			onMouseOver = {activateButtonsShow}
-			onMouseOut = {deactivateButtonsShow}>
+			onMouseOut 	= {deactivateButtonsShow}>
 			{loading ? <div>loading...</div> : <div>{name}</div>}
 			{
 				buttonsShow && !loading
@@ -54,7 +54,11 @@ function Header({headerItems, name, clearAuth, deleteUser, setAddingNewUserMode}
 			{
 				headerItems.map( (item, key) => {
 					return (
-						<NavLink to={item.link} className={styles.header_nav_links} key={key}>{item.name}</NavLink>
+						<NavLink 
+							to 			= {item.link} 
+							className 	= {styles.header_nav_links} 
+							key 		= {key}
+						>{item.name}</NavLink>
 					)
 				})
 			}
